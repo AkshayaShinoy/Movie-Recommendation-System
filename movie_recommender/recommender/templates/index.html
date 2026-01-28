@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { margin-top: 50px; }
+        .card { border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-4 mb-4">
+            <h1 class="text-center mb-4">Welcome to the Recommender!</h1>
+            <form method="post" action="{% url 'recommendations' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="movie_title" class="form-label">Select a movie:</label>
+                    <select class="form-select" id="movie_title" name="movie_title">
+                        {% for title in movie_titles %}
+                            <option value="{{ title }}">{{ title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Get Recommendations</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card p-4">
+            <h2 class="text-center mb-4">Popular Genres</h2>
+            <div class="text-center">
+                <img src="{% static 'genre_wordcloud.png' %}" alt="Genre Word Cloud" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

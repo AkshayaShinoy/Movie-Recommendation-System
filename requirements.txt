@@ -1,0 +1,7 @@
+django
+pandas
+joblib
+wordcloud
+matplotlib
+cinemagoer
+numpy

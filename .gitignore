@@ -1,0 +1,21 @@
+# Python environment (prevents uploading thousands of library files)
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Django specific
+db.sqlite3
+local_settings.py
+
+# Data & Model Files 
+# Note: You ARE uploading your .pkl files so the app works for others.
+# But you should ignore the raw dataset if it's too large.
+ml-100k/
+
+# Operating System junk
+.DS_Store
+Thumbs.db
+
+# Generated images
+genre_wordcloud.png
